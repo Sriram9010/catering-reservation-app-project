@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering App</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body><nav style="margin-bottom: 30px;">
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📋 Dashboard</a>
+    </div>
+    <button id="logout-btn">Logout</button>
+  </nav>
+  <button onclick="logout()" id="logout-btn" style="float:right;">Logout</button>
+</nav>
+
+
+  <h1>Welcome to Catering App</h1>
+  <h1>Register</h1>
+
+  <!-- Login/Register Form -->
+  <div>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+   
+  </div>
+
+<!-- Firebase App (Core) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<!-- Your custom JS -->
+<script src="script.js"></script>
+
+<h2>Login</h2>
+<input type="email" id="login-email" placeholder="Email" />
+<input type="password" id="login-password" placeholder="Password" />
+<button onclick="login()">Login</button>
+
+<h3 id="user-info" style="display: none;"></h3>
+<button onclick="logout()" id="logout-btn" style="display: none;">Logout</button>
+
+<h3>Your Details</h3>
+<input type="text" id="customer-name" placeholder="Your Name" required />
+<input type="text" id="customer-phone" placeholder="Phone Number" required />
+<textarea id="customer-address" placeholder="Address" required></textarea>
+
+<h2>Place Catering Order</h2>
+
+        <form id="order-form">
+            <label for="event-type">Event Type:</label><br />
+            <input type="text" id="event-type" placeholder="e.g. Wedding" required /><br /><br />
+          
+            <label for="event-date">Event Date:</label><br />
+            <input type="date" id="event-date" required /><br /><br />
+          
+            <label for="num-people">Number of People:</label><br />
+            <input type="number" id="num-people" placeholder="100" required /><br /><br />
+          
+            <label>Main Course:</label><br />
+            <div id="menu-options" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+              <label style="width: 150px; text-align: center;">
+                <img src="https://static.wixstatic.com/media/91e241_0cf76aa5613b4055be2f922f71edeaa0~mv2.jpg/v1/fill/w_560,h_372,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ustaadi%20Hyderabadi%20Veg%20Biryani.jpg" alt="Veg Biryani" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Veg Biryani" data-price="100"> Veg Biryani (₹100)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://www.chefkunalkapur.com/wp-content/uploads/2022/07/Tawa-Paneer-2-1300x731.jpg?v=1657257741" alt="Paneer" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Paneer" data-price="80"> Paneer (₹80)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://rotimatic.com/cdn/shop/articles/Wheat_Roti.webp?v=1744112824" alt="Roti" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Roti" data-price="40"> Roti (₹40)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://vismaifood.com/storage/app/uploads/public/e12/7b7/127/thumb__1200_0_0_0_auto.jpg" alt="Chicken Biryani" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Chicken Biryani" data-price="150"> Chicken Biryani (₹150)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://media.istockphoto.com/id/469866881/photo/mutton-gosht-biryani.jpg?s=612x612&w=0&k=20&c=FH6dExVNp_hb9JtJCyGrmKAhPJwQo3UdlMC6gHCbVLg=" alt="Mutton Biryani" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Mutton Biryani" data-price="200"> Mutton Biryani (₹200)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://vismaifood.com/storage/app/uploads/public/be9/618/974/thumb__1200_0_0_0_auto.jpg" alt="Potato Fry" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Potato Fry" data-price="60"> Potato Fry (₹60)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://media.istockphoto.com/id/609913058/photo/lemon-rice-south-indian-rice-dish-with-lemon.jpg?s=612x612&w=0&k=20&c=MvEGZIH9IJ15wKmSoMqrw6f0NlLhV1n-Oz55prJscFE=" alt="lemon Rice" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Lemon rice" data-price="90"> Lemon rice (₹90)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://i.ytimg.com/vi/jLrHENui4vU/maxresdefault.jpg" alt="Fish Fry" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Fish Fry" data-price="120"> Fish Fry (₹120)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://i.ytimg.com/vi/xkMbJCtaaqA/maxresdefault.jpg" alt="Manchurian" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Manchurian" data-price="90"> Manchurian (₹90)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://img.onmanorama.com/content/dam/mm/en/food/features/images/2024/3/23/sambar.jpg?w=1120&h=583" alt="sambar" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="sambar" data-price="50"> Sambar (₹50)
+              </label>
+              <label style="width: 150px; text-align: center;">
+                <img src="https://nutritionmeetsfoodscience.com/wp-content/uploads/2023/05/a4.png" alt="Curd" style="width: 100%; border-radius: 12px;">
+                <br />
+                <input type="checkbox" value="Curd" data-price="40"> Curd (₹40)
+              </label>
+            </div>
+
+            <p><strong>Total Estimate: ₹<span id="price-estimate">0</span></strong></p>
+            <br />
+
+            <button type="submit">Place Order</button>
+               <br />
+               <h3><strong>🍮 Desserts</strong></h3>
+                <div id="dessert-options" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                 <!-- Gulab Jamun -->
+                 <label style="width: 150px; text-align: center;">
+                   <img src="https://www.archanaskitchen.com//images/archanaskitchen/1-Author/Preeti_Tamilarasan/Gulab_Jamun_Recipe_with_Khoya-1.jpg" alt="Gulab Jamun" style="width: 100%; border-radius: 12px;">
+                   <br />
+                   <input type="checkbox" value="Gulab Jamun" data-price="50"> Gulab Jamun (₹50)
+                  </label>
+
+                    <!-- Rasgulla -->
+                     <label style="width: 150px; text-align: center;">
+                        <img src="https://www.thespruceeats.com/thmb/LRHVkNnPFRGjN5LixQWD1C9Pnjw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/rasgulla-indian-dessert-1957839-hero-01-7c3528a2d34a4f1b9248c7483a73d0a6.jpg" alt="Rasgulla" style="width: 100%; border-radius: 12px;">
+                        <br />
+                        <input type="checkbox" value="Rasgulla" data-price="50"> Rasgulla (₹50)
+                      </label>
+                      <label style="width: 150px; text-align: center;">
+                        <img src="https://yummyindiankitchen.com/wp-content/uploads/2020/11/hyderabadi-double-ka-meetha-how-to-make-double-ka-meetha-1024x576.jpg" alt="Double ka meeta" style="width: 100%; border-radius: 12px;">
+                        <br />
+                        <input type="checkbox" value="Double ka meeta" data-price="60"> Double ka meeta (₹60)
+                       </label> 
+                       <label style="width: 150px; text-align: center;">
+                        <img src="https://www.simplyrecipes.com/thmb/7n24DH-_DJs7khvFxY4Pb1Lsgjg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Butter-Pecan-Ice-Cream-LEAD-5-a0fd1edc9c7f47f1b340699ad4cb0365.jpg" alt="Ice Cream" style="width: 100%; border-radius: 12px;">
+                        <br />
+                        <input type="checkbox" value="Ice Cream" data-price="60"> Ice Cream (₹60)
+                       </label>     
+                </div>
+
+                <br />
+                
+          </form>
+          <button class="delete-btn" onclick="deleteOrder('${doc.id}')">Delete</button>
+
+          <div id="ordersList">
+            <h2>Your Catering Orders</h2>
+            <!-- Orders will appear here -->
+          </div>
+          
+  
+
+        <!-- index.html -->
+        <div id="toast-container"></div>
+</body>
+</html>

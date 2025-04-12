@@ -1,0 +1,271 @@
+/* ===== GOOGLE FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* ===== RESET & BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;
+  padding: 30px;
+  min-height: 100vh;
+  color: #2c3e50;
+  position: relative;
+}
+
+/* Optional overlay to darken or soften the background for better readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(150, 148, 148, 0.3); /* Use rgba(0,0,0,0.3) for darker overlay */
+  z-index: -10;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar, nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 18px 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-left {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a, nav a {
+  text-decoration: none;
+  color: #2c3e50;
+  margin-right: 18px;
+  position: relative;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar a::after, nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #f39c12, #e67e22);
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover, nav a:hover {
+  color: #f39c12;
+}
+
+.navbar a:hover::after, nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+#logout-btn {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+}
+
+#logout-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #c0392b, #a93226);
+}
+
+/* ===== HEADINGS ===== */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #d35400;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ===== CONTAINERS & FORMS ===== */
+form, .form-section, #ordersList, #allOrders, .container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== INPUTS ===== */
+input, textarea, select {
+  width: 100%;
+  padding: 14px;
+  margin: 14px 0 24px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  font-size: 16px;
+  background-color: #fffefc;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #f39c12;
+  outline: none;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+/* ===== BUTTONS ===== */
+button {
+  background: linear-gradient(to right, #f39c12, #e67e22);
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #e67e22, #d35400);
+}
+
+button.delete-btn {
+  background: linear-gradient(to right, #95a5a6, #7f8c8d);
+  box-shadow: 0 6px 12px rgba(127, 140, 141, 0.3);
+}
+
+button.delete-btn:hover {
+  background: linear-gradient(to right, #7f8c8d, #636e72);
+}
+
+button.mark-btn {
+  background: linear-gradient(to right, #27ae60, #1abc9c);
+  margin-top: 10px;
+  box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+button.mark-btn:hover {
+  background: linear-gradient(to right, #1e8449, #16a085);
+}
+
+/* ===== ORDER CARDS ===== */
+#ordersList div, #allOrders div {
+  border-left: 6px solid #f39c12;
+  padding: 24px;
+  background: rgba(255, 253, 247, 0.95);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+#ordersList div:hover, #allOrders div:hover {
+  transform: translateY(-6px);
+}
+
+/* ===== CALENDAR ===== */
+#calendar {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
+/* ===== FILTERS ===== */
+#filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+#filters select {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  form, #ordersList, #calendar, #filters {
+    width: 100%;
+    padding: 20px;
+  }
+}
+/* ===== TOAST NOTIFICATIONS ===== */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background-color: #2ecc71;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: slideIn 0.4s ease, fadeOut 0.4s ease 2.5s forwards;
+}
+
+.toast.error {
+  background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
