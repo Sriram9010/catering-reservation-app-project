@@ -102,7 +102,7 @@ h1, h2, h3 {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-/* ===== CONTAINERS & FORMS ===== */
+/*  CONTAINERS & FORMS  */
 form, .form-section, #ordersList, #allOrders, .container {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
@@ -115,7 +115,7 @@ form, .form-section, #ordersList, #allOrders, .container {
   margin-right: auto;
 }
 
-/* ===== INPUTS ===== */
+/*  INPUTS  */
 input, textarea, select {
   width: 100%;
   padding: 14px;
@@ -133,7 +133,7 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
-/* ===== BUTTONS ===== */
+/*  BUTTONS  */
 button {
   background: linear-gradient(to right, #f39c12, #e67e22);
   color: white;
@@ -185,8 +185,7 @@ button.mark-btn:hover {
 #ordersList div:hover, #allOrders div:hover {
   transform: translateY(-6px);
 }
-
-/* ===== CALENDAR ===== */
+/*  CALENDAR  */
 #calendar {
   max-width: 900px;
   margin: 30px auto;
@@ -269,3 +268,4 @@ button.mark-btn:hover {
     transform: translateX(120%);
   }
 }
+
